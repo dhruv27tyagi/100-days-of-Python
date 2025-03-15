@@ -47,14 +47,7 @@ def select_recipie(coffee_type):
             break
     return selected_recipie
 
-def espresso():
-    resources_required = recipie[0]
-    return resources_required
-
-def latte():
-    pass
-
-def cappuccino():
+def make_coffe():
     pass
 
 def report():
