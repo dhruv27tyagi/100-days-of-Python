@@ -1,13 +1,15 @@
 from bs4 import BeautifulSoup
-with open("website.html") as file:
-    contents = file.read()
+import requests 
 
-soup = BeautifulSoup(contents, 'lxml')
+response = requests.get("https://news.ycombinator.com/")
+
+#print(response.text)
+
+yc_web_page = response.text
+
+soup = BeautifulSoup(yc_web_page, "html.parser")
 print(soup.title)
-
-all_anchor_tags = soup.find_all(name="a")
-
-print(all_anchor_tags)
-
-for tag in all_anchor_tags:
-    tag.get("href") 
+article_tag = soup.find("span", class_ = "titleline")
+print(article_tag)
+article_text = article_tag.getText()
+print(article_text)
